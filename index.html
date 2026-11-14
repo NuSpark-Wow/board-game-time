@@ -27,7 +27,7 @@ h2{font-family:Georgia,serif;font-size:20px;margin:20px 0 10px}
 .btn.on,.btn.primary{background:var(--navy);color:#fff}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:#1d2433}
 .btn.sm{padding:5px 12px;font-size:14px}
-.desc{font-size:13.5px;color:var(--muted);margin-top:6px}
+.desc{font-size:13.5px;color:var(--muted);margin-top:6px}.aka{margin:8px 0 2px;padding:7px 11px;background:#fdf3dc;border:1px solid #ecd59a;border-radius:9px;color:#3b2a1e;font-size:14px}.akafine{font-size:11.5px!important;color:#8a8170!important;line-height:1.4;margin:6px 0 0!important}
 .start{margin:22px 0 6px;width:100%;padding:14px;font-size:17px}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 16px 30px}
 /* game screen */
@@ -110,7 +110,7 @@ body:has(#menu[hidden]) .strip,body:has(#play:not([hidden])) .strip,body:has(#ga
   <div class="row" id="speeds"></div>
   <button class="btn gold start" id="startBtn">Let's play →</button>
  </div>
- <footer>A NuSpark LearnWow tool · Just for fun. Game names are our own; no affiliation with any brand.</footer>
+ <footer>A NuSpark LearnWow tool · Just for fun. Some games have their own names because the originals are trademarks of their makers. No affiliation with any brand.</footer>
 </div>
 <div id="game" hidden>
  <div class="topbar"><button class="tb" id="leave">✕ Quit</button><b id="gname"></b><button class="tb" id="rulesBtn">Rules</button></div>
@@ -187,6 +187,9 @@ T.modal=(html,buttons=[{label:'Continue',v:1}])=>{const tok=T.token;
  return new Promise(res=>{$('#mbody').innerHTML=html;const mb=$('#mbtns');mb.innerHTML='';
   buttons.forEach((b,i)=>mb.append(h('button',{class:'btn'+(i===0?' primary':''),onclick:()=>{$('#modal').style.display='none';res(b.v);}},b.label)));
   $('#modal').style.display='flex';}).then(v=>{chk(tok);return v;});};
+const AKA={words:'Scrabble',dice:'Yahtzee',four:'Connect 4',reversi:'Othello',sea:'Battleship',hunt:'Boggle',runs:'Rummikub',island:'Catan',lmr:'LCR (Left Center Right)'};
+function akaLine(id){const a=AKA[id];return a?`<div class="aka">🎲 <b>${GAMES[id].name}</b> plays like <b>${a}®</b></div>`:'';}
+function akaFine(id){const a=AKA[id];return a?`<p class="akafine">Why a different name? ${a}® is a trademark owned by its maker, so we gave our version its own name. Board Game Time is not affiliated with or endorsed by the maker, and our rules may differ a little.</p>`:'';}
 T.info=html=>{if(T.auto)return;$('#mbody').innerHTML=html;const mb=$('#mbtns');mb.innerHTML='';mb.append(h('button',{class:'btn primary',onclick:()=>{$('#modal').style.display='none';}},'Close'));$('#modal').style.display='flex';};
 T.pname=p=>p.human?'You':p.name;
 /* who goes first: a coin flip the player taps */
@@ -293,7 +296,7 @@ function startGame(gid,n,level,keep){T.token++;setPaused(false);T.pending=null;T
   if(!T.auto&&n>1&&!keep){while(true){T.render();const v=await T.modal(`<h3>Meet your opponent${n>2?'s':''}</h3>${T.players.slice(1).map(p=>`<div style="display:flex;gap:12px;align-items:flex-start;margin:12px 0"><div style="font-size:34px;line-height:1;background:#f6e9c6;border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex:none">${p.emoji}</div><div><b style="font-size:16px;color:${G.colorOf&&G.colorOf(p)&&G.colorOf(p)!=='#f8fafc'?G.colorOf(p):'#1d2433'}">${p.name}</b><div style="font-size:14px;color:#4b5563">${p.bio}</div></div></div>`).join('')}<p style="font-size:13px;color:#6b7280">They play at ${LEVELS[level][0]} level.</p>`,[{label:"Let's play!",v:'go'},{label:'🔀 New opponents',v:'new'}]);
     if(v==='go')break;const o=pickOpponents(n-1);T.opp=o;T.players.slice(1).forEach((p,k)=>{p.name=o[k].n;p.emoji=o[k].e;p.bio=o[k].d;});}}
   if(tok!==T.token)throw ABORT;
-  if(level===0&&!T.auto&&!keep)T.info(`<h3>How to play ${G.name}</h3>${G.rules}<p style="color:#6b7280;font-size:13px">You can open these rules anytime with the Rules button.</p>`);
+  if(level===0&&!T.auto&&!keep)T.info(`<h3>How to play ${G.name}</h3>${akaLine(gid)}${G.rules}${akaFine(gid)}<p style="color:#6b7280;font-size:13px">You can open these rules anytime with the Rules button.</p>`);
   return G.play(T);};
  const pr=run();T.render();
  return pr.catch(e=>{if(e!==ABORT){console.error(e);if(!T.auto)T.modal('<h3>Oops</h3>Something went wrong with this game. Let\'s start a fresh one.',[{label:'New game',v:1}]).then(()=>startGame(gid,n,level)).catch(()=>{});else throw e;}});}
@@ -301,7 +304,7 @@ const ORDER=['words','hunt','dice','lmr','runs','checkers','chess','reversi','ba
 const LEVELS=[['Beginner','Computer players make plenty of mistakes. Your possible moves light up, and hints are always there.'],['Intermediate','Solid computer players who see the obvious plays and slip up now and then.'],['Advanced','Sharp computer players who think ahead and rarely slip.']];
 function renderMenu(){const g=$('#games');g.innerHTML='';
  ORDER.forEach(id=>{const G=GAMES[id];const b=h('button',{class:'gcard'+(MENU.gid===id?' on':''),onclick:()=>{MENU.gid=id;if(!MENU.n||MENU.n<G.min||MENU.n>G.max)MENU.n=G.def||G.max;renderMenu();}},h('span',{class:'ic'},G.icon),h('b',{},G.name),h('small',{},G.tag));g.append(b);});
- const G=MENU.gid&&GAMES[MENU.gid];$('#gdesc').textContent=G?G.blurb:'Tap a game to see what it is.';
+ const G=MENU.gid&&GAMES[MENU.gid];$('#gdesc').innerHTML=G?(h('span',{},G.blurb).outerHTML+akaLine(MENU.gid)+akaFine(MENU.gid)):'Tap a game to see what it is.';
  const pc=$('#pcount');pc.innerHTML='';
  if(G){if(G.min===G.max){pc.append(h('span',{class:'desc',style:'margin:0'},G.playersText||`${G.min} players`));}
   else for(let k=G.min;k<=G.max;k++)pc.append(h('button',{class:'btn sm'+(MENU.n===k?' on':''),onclick:()=>{MENU.n=k;renderMenu();}},k===1?'Just me':`${k} players`));
@@ -317,7 +320,7 @@ function bindUI(){
  $('#startBtn').onclick=()=>{if(!MENU.gid){$('#gdesc').textContent='Pick a game first.';return;}T.fast=MENU.fast;T.chatty=MENU.talk==='personality';startGame(MENU.gid,MENU.n,MENU.level);};
  $('#leave').onclick=()=>{$('#mbody').innerHTML='<h3>Quit this game?</h3><p>You\'ll go back to the main screen, and this game won\'t be saved.</p>';const mb=$('#mbtns');mb.innerHTML='';
   mb.append(h('button',{class:'btn primary',onclick:()=>showMenu()},'Quit game'),h('button',{class:'btn',onclick:()=>{$('#modal').style.display='none';}},'Keep playing'));$('#modal').style.display='flex';};
- $('#rulesBtn').onclick=()=>{if(T.G)T.info(`<h3>How to play ${T.G.name}</h3>${T.G.rules}`);};
+ $('#rulesBtn').onclick=()=>{if(T.G)T.info(`<h3>How to play ${T.G.name}</h3>${akaLine(T.gid)}${T.G.rules}${akaFine(T.gid)}`);};
  window.addEventListener('resize',()=>T.render());}
 /* board cell size helper */
 const fitCell=(n,max=56,pad=24)=>Math.max(18,Math.min(max,Math.floor((Math.min(window.innerWidth||400,560)-pad)/n)));
