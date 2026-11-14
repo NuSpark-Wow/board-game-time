@@ -88,11 +88,11 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 16px 3
 body:has(#menu[hidden]) .strip,body:has(#play:not([hidden])) .strip,body:has(#game:not([hidden])) .strip{display:none}
 @media (max-width:520px){.strip{gap:6px}.strip li{width:52px}.strip .disc{width:48px;height:48px;border-width:2px}.strip span{font-size:9px;word-break:break-word}}
 @media print{.strip{display:none!important}}
-</style>
+.mjt{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(#fffdf6,#efe6cf);border:1px solid #b9a77f;border-bottom-width:3px;border-radius:5px;box-shadow:0 1px 2px rgba(0,0,0,.35);line-height:1;font-family:Georgia,"Noto Serif SC","Microsoft YaHei",serif;vertical-align:middle}.mjt b{font-weight:800}.mjt small{font:600 8.5px/1 Arial,sans-serif;color:#6b5a3a;margin-top:2px;letter-spacing:.02em}.mjt.last{box-shadow:0 0 0 3px #fde047}.mjboard{display:flex;flex-direction:column;gap:6px;width:100%;max-width:620px}.mjrow{background:rgba(0,0,0,.18);border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:90px 1fr;gap:4px 8px;align-items:center}.mjrow.act{outline:2px solid #fde047}.mjwho{color:#fff;font-weight:700;font-size:13px;grid-row:span 2}.mjwho small{display:block;font-weight:400;color:#fde7c7;font-size:11px}.mjmelds,.mjriver{display:flex;flex-wrap:wrap;gap:3px;align-items:center}.mjset{display:inline-flex;gap:1px;padding:2px;border-radius:5px;background:rgba(255,255,255,.15)}.mjset.claimed{background:rgba(253,224,71,.25)}.mjcount{color:#d1fae5;font-size:11.5px}.lmrwrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px}.lmrpot{background:#fff8e6;color:#1d2433;border-radius:50%;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35);font-size:13px}.lmrpot b{font-size:34px}.lmrroll{display:flex;gap:10px}.lmrd{display:flex;align-items:center;justify-content:center;background:#fff;color:#b91c1c;font-weight:900;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,.4);font-family:Arial,sans-serif}.lmrd.dot{color:#1d2433}.lmrlines{color:#fff;font-size:14px;text-align:center;line-height:1.5}</style>
 </head>
 <body>
 <div id="menu">
- <header><h1>Board Game <span>Time</span></h1><p>14 classic board and table games. Computer players who play to your level.</p><ul class="strip" aria-label="Some of the games"><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Checkers"><rect width="100" height="100" fill="#f2a490"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="22" y="22" width="14" height="14" fill="#e9d9b4"/><rect x="36" y="22" width="14" height="14" fill="#3b2a1e"/><rect x="50" y="22" width="14" height="14" fill="#e9d9b4"/><rect x="64" y="22" width="14" height="14" fill="#3b2a1e"/><rect x="22" y="36" width="14" height="14" fill="#3b2a1e"/><rect x="36" y="36" width="14" height="14" fill="#e9d9b4"/><rect x="50" y="36" width="14" height="14" fill="#3b2a1e"/><rect x="64" y="36" width="14" height="14" fill="#e9d9b4"/><rect x="22" y="50" width="14" height="14" fill="#e9d9b4"/><rect x="36" y="50" width="14" height="14" fill="#3b2a1e"/><rect x="50" y="50" width="14" height="14" fill="#e9d9b4"/><rect x="64" y="50" width="14" height="14" fill="#3b2a1e"/><rect x="22" y="64" width="14" height="14" fill="#3b2a1e"/><rect x="36" y="64" width="14" height="14" fill="#e9d9b4"/><rect x="50" y="64" width="14" height="14" fill="#3b2a1e"/><rect x="64" y="64" width="14" height="14" fill="#e9d9b4"/><circle cx="43" cy="30" r="5.6" fill="#7d1f16"/><circle cx="43" cy="29" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="71" cy="30" r="5.6" fill="#7d1f16"/><circle cx="71" cy="29" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="29" cy="44" r="5.6" fill="#7d1f16"/><circle cx="29" cy="43" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="71" cy="58" r="5.6" fill="#000"/><circle cx="71" cy="57" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><circle cx="29" cy="72" r="5.6" fill="#000"/><circle cx="29" cy="71" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><circle cx="57" cy="72" r="5.6" fill="#000"/><circle cx="57" cy="71" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><rect x="22" y="22" width="56" height="56" fill="none" stroke="#5e3519" stroke-width="2.5"/></g></svg></span><span>Checkers</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Chess"><rect width="100" height="100" fill="#7fc8c4"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><ellipse cx="50" cy="77" rx="24" ry="4" fill="#00000030"/><text x="38" y="76" font-size="44" text-anchor="middle" fill="#fff" stroke="#1d2433" stroke-width="1.2" font-family="Segoe UI Symbol,DejaVu Sans,Georgia,serif">&#9816;&#xFE0E;</text><text x="62" y="76" font-size="44" text-anchor="middle" fill="#1d2433" font-family="Segoe UI Symbol,DejaVu Sans,Georgia,serif">&#9818;&#xFE0E;</text></g></svg></span><span>Chess</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Five Dice"><rect width="100" height="100" fill="#f0cf6b"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><g transform="rotate(-14 38 46)"><rect x="22" y="30" width="32" height="32" rx="6" fill="#fff" stroke="#c9c2b3" stroke-width="1.5"/><circle cx="29.4" cy="37.4" r="3.5" fill="#1d2433"/><circle cx="46.6" cy="37.4" r="3.5" fill="#1d2433"/><circle cx="38.0" cy="46.0" r="3.5" fill="#1d2433"/><circle cx="29.4" cy="54.6" r="3.5" fill="#1d2433"/><circle cx="46.6" cy="54.6" r="3.5" fill="#1d2433"/></g><g transform="rotate(12 62 58)"><rect x="47" y="43" width="30" height="30" rx="6" fill="#c0392b"/><circle cx="53.9" cy="49.9" r="3.3" fill="#fff"/><circle cx="62.0" cy="58.0" r="3.3" fill="#fff"/><circle cx="70.1" cy="66.1" r="3.3" fill="#fff"/></g></g></svg></span><span>Five Dice</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Dominoes"><rect width="100" height="100" fill="#b6a6e6"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><g transform="rotate(-16 38 48)"><rect x="28" y="28" width="20" height="40" rx="4" fill="#fff" stroke="#1d2433" stroke-width="1.6"/><line x1="31" y1="48" x2="45" y2="48" stroke="#1d2433" stroke-width="1.2"/><circle cx="32.6" cy="32.6" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="32.6" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="38.0" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="38.0" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="43.4" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="43.4" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="52.6" r="2.2" fill="#1d2433"/><circle cx="38.0" cy="58.0" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="63.4" r="2.2" fill="#1d2433"/></g><g transform="rotate(14 62 52)"><rect x="52" y="32" width="20" height="40" rx="4" fill="#fff" stroke="#1d2433" stroke-width="1.6"/><line x1="55" y1="52" x2="69" y2="52" stroke="#1d2433" stroke-width="1.2"/><circle cx="56.6" cy="36.6" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="36.6" r="2.2" fill="#1d2433"/><circle cx="62.0" cy="42.0" r="2.2" fill="#1d2433"/><circle cx="56.6" cy="47.4" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="47.4" r="2.2" fill="#1d2433"/><circle cx="56.6" cy="56.6" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="67.4" r="2.2" fill="#1d2433"/></g></g></svg></span><span>Dominoes</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Backgammon"><rect width="100" height="100" fill="#9fd39a"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="16" y="24" width="68" height="52" rx="4" fill="#7a4a24"/><rect x="20" y="28" width="60" height="44" rx="2" fill="#e9d9b4"/><rect x="48.5" y="28" width="3" height="44" fill="#7a4a24"/><path d="M20.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M20.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M29.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M29.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><path d="M39.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M39.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M51.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M51.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><path d="M61.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M61.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M70.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M70.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><circle cx="24.75" cy="32.5" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/><circle cx="24.75" cy="39" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/><circle cx="63.75" cy="67.5" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="63.75" cy="61" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="73.25" cy="32.5" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="34.25" cy="67.5" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/></g></svg></span><span>Backgammon</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Four in a Row"><rect width="100" height="100" fill="#8fc6ea"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="20" y="26" width="60" height="46" rx="5" fill="#1f5fbf"/><rect x="16" y="70" width="8" height="8" rx="2" fill="#174a96"/><rect x="76" y="70" width="8" height="8" rx="2" fill="#174a96"/><circle cx="29" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="43" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="57" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="71" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="29" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="43" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="57" cy="44.5" r="4.4" fill="#c0392b"/><circle cx="71" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="29" cy="55.0" r="4.4" fill="#e8eef9"/><circle cx="43" cy="55.0" r="4.4" fill="#c0392b"/><circle cx="57" cy="55.0" r="4.4" fill="#f5c518"/><circle cx="71" cy="55.0" r="4.4" fill="#e8eef9"/><circle cx="29" cy="65.5" r="4.4" fill="#f5c518"/><circle cx="43" cy="65.5" r="4.4" fill="#c0392b"/><circle cx="57" cy="65.5" r="4.4" fill="#f5c518"/><circle cx="71" cy="65.5" r="4.4" fill="#c0392b"/></g></svg></span><span>Four in a Row</span></li></ul></header>
+ <header><h1>Board Game <span>Time</span></h1><p>16 classic board and table games. Computer players who play to your level.</p><ul class="strip" aria-label="Some of the games"><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Checkers"><rect width="100" height="100" fill="#f2a490"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="22" y="22" width="14" height="14" fill="#e9d9b4"/><rect x="36" y="22" width="14" height="14" fill="#3b2a1e"/><rect x="50" y="22" width="14" height="14" fill="#e9d9b4"/><rect x="64" y="22" width="14" height="14" fill="#3b2a1e"/><rect x="22" y="36" width="14" height="14" fill="#3b2a1e"/><rect x="36" y="36" width="14" height="14" fill="#e9d9b4"/><rect x="50" y="36" width="14" height="14" fill="#3b2a1e"/><rect x="64" y="36" width="14" height="14" fill="#e9d9b4"/><rect x="22" y="50" width="14" height="14" fill="#e9d9b4"/><rect x="36" y="50" width="14" height="14" fill="#3b2a1e"/><rect x="50" y="50" width="14" height="14" fill="#e9d9b4"/><rect x="64" y="50" width="14" height="14" fill="#3b2a1e"/><rect x="22" y="64" width="14" height="14" fill="#3b2a1e"/><rect x="36" y="64" width="14" height="14" fill="#e9d9b4"/><rect x="50" y="64" width="14" height="14" fill="#3b2a1e"/><rect x="64" y="64" width="14" height="14" fill="#e9d9b4"/><circle cx="43" cy="30" r="5.6" fill="#7d1f16"/><circle cx="43" cy="29" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="71" cy="30" r="5.6" fill="#7d1f16"/><circle cx="71" cy="29" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="29" cy="44" r="5.6" fill="#7d1f16"/><circle cx="29" cy="43" r="5.6" fill="#c0392b" stroke="#ffffff55" stroke-width=".8"/><circle cx="71" cy="58" r="5.6" fill="#000"/><circle cx="71" cy="57" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><circle cx="29" cy="72" r="5.6" fill="#000"/><circle cx="29" cy="71" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><circle cx="57" cy="72" r="5.6" fill="#000"/><circle cx="57" cy="71" r="5.6" fill="#1d2433" stroke="#ffffff55" stroke-width=".8"/><rect x="22" y="22" width="56" height="56" fill="none" stroke="#5e3519" stroke-width="2.5"/></g></svg></span><span>Checkers</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Chess"><rect width="100" height="100" fill="#7fc8c4"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><ellipse cx="50" cy="77" rx="24" ry="4" fill="#00000030"/><text x="38" y="76" font-size="44" text-anchor="middle" fill="#fff" stroke="#1d2433" stroke-width="1.2" font-family="Segoe UI Symbol,DejaVu Sans,Georgia,serif">&#9816;&#xFE0E;</text><text x="62" y="76" font-size="44" text-anchor="middle" fill="#1d2433" font-family="Segoe UI Symbol,DejaVu Sans,Georgia,serif">&#9818;&#xFE0E;</text></g></svg></span><span>Chess</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Five Dice"><rect width="100" height="100" fill="#f0cf6b"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><g transform="rotate(-14 38 46)"><rect x="22" y="30" width="32" height="32" rx="6" fill="#fff" stroke="#c9c2b3" stroke-width="1.5"/><circle cx="29.4" cy="37.4" r="3.5" fill="#1d2433"/><circle cx="46.6" cy="37.4" r="3.5" fill="#1d2433"/><circle cx="38.0" cy="46.0" r="3.5" fill="#1d2433"/><circle cx="29.4" cy="54.6" r="3.5" fill="#1d2433"/><circle cx="46.6" cy="54.6" r="3.5" fill="#1d2433"/></g><g transform="rotate(12 62 58)"><rect x="47" y="43" width="30" height="30" rx="6" fill="#c0392b"/><circle cx="53.9" cy="49.9" r="3.3" fill="#fff"/><circle cx="62.0" cy="58.0" r="3.3" fill="#fff"/><circle cx="70.1" cy="66.1" r="3.3" fill="#fff"/></g></g></svg></span><span>Five Dice</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Dominoes"><rect width="100" height="100" fill="#b6a6e6"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><g transform="rotate(-16 38 48)"><rect x="28" y="28" width="20" height="40" rx="4" fill="#fff" stroke="#1d2433" stroke-width="1.6"/><line x1="31" y1="48" x2="45" y2="48" stroke="#1d2433" stroke-width="1.2"/><circle cx="32.6" cy="32.6" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="32.6" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="38.0" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="38.0" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="43.4" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="43.4" r="2.2" fill="#1d2433"/><circle cx="32.6" cy="52.6" r="2.2" fill="#1d2433"/><circle cx="38.0" cy="58.0" r="2.2" fill="#1d2433"/><circle cx="43.4" cy="63.4" r="2.2" fill="#1d2433"/></g><g transform="rotate(14 62 52)"><rect x="52" y="32" width="20" height="40" rx="4" fill="#fff" stroke="#1d2433" stroke-width="1.6"/><line x1="55" y1="52" x2="69" y2="52" stroke="#1d2433" stroke-width="1.2"/><circle cx="56.6" cy="36.6" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="36.6" r="2.2" fill="#1d2433"/><circle cx="62.0" cy="42.0" r="2.2" fill="#1d2433"/><circle cx="56.6" cy="47.4" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="47.4" r="2.2" fill="#1d2433"/><circle cx="56.6" cy="56.6" r="2.2" fill="#1d2433"/><circle cx="67.4" cy="67.4" r="2.2" fill="#1d2433"/></g></g></svg></span><span>Dominoes</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Backgammon"><rect width="100" height="100" fill="#9fd39a"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="16" y="24" width="68" height="52" rx="4" fill="#7a4a24"/><rect x="20" y="28" width="60" height="44" rx="2" fill="#e9d9b4"/><rect x="48.5" y="28" width="3" height="44" fill="#7a4a24"/><path d="M20.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M20.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M29.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M29.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><path d="M39.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M39.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M51.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M51.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><path d="M61.0 28 l4.75 18 4.75 -18z" fill="#c0392b"/><path d="M61.0 72 l4.75 -18 4.75 18z" fill="#2c3e50"/><path d="M70.5 28 l4.75 18 4.75 -18z" fill="#2c3e50"/><path d="M70.5 72 l4.75 -18 4.75 18z" fill="#c0392b"/><circle cx="24.75" cy="32.5" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/><circle cx="24.75" cy="39" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/><circle cx="63.75" cy="67.5" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="63.75" cy="61" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="73.25" cy="32.5" r="3.6" fill="#1d2433" stroke="#00000055" stroke-width=".8"/><circle cx="34.25" cy="67.5" r="3.6" fill="#fff" stroke="#00000055" stroke-width=".8"/></g></svg></span><span>Backgammon</span></li><li><span class="disc"><svg viewBox="0 0 100 100" role="img" aria-label="Four in a Row"><rect width="100" height="100" fill="#8fc6ea"/><g transform="translate(50 50) scale(1.22) translate(-50 -50)"><rect x="20" y="26" width="60" height="46" rx="5" fill="#1f5fbf"/><rect x="16" y="70" width="8" height="8" rx="2" fill="#174a96"/><rect x="76" y="70" width="8" height="8" rx="2" fill="#174a96"/><circle cx="29" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="43" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="57" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="71" cy="34.0" r="4.4" fill="#e8eef9"/><circle cx="29" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="43" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="57" cy="44.5" r="4.4" fill="#c0392b"/><circle cx="71" cy="44.5" r="4.4" fill="#e8eef9"/><circle cx="29" cy="55.0" r="4.4" fill="#e8eef9"/><circle cx="43" cy="55.0" r="4.4" fill="#c0392b"/><circle cx="57" cy="55.0" r="4.4" fill="#f5c518"/><circle cx="71" cy="55.0" r="4.4" fill="#e8eef9"/><circle cx="29" cy="65.5" r="4.4" fill="#f5c518"/><circle cx="43" cy="65.5" r="4.4" fill="#c0392b"/><circle cx="57" cy="65.5" r="4.4" fill="#f5c518"/><circle cx="71" cy="65.5" r="4.4" fill="#c0392b"/></g></svg></span><span>Four in a Row</span></li></ul></header>
  <div class="wrap">
   <h2>1. Pick a game</h2>
   <div class="games" id="games"></div>
@@ -275,7 +275,7 @@ function pfmWhy(gid,v,txt){const st=T.G&&T.G.state;
 function playForMe(){const pd=T.pending;if(!pd||!pd.suggest)return;const s=pd.suggest()||{};
  if(T.gid==='island'&&/build|away from|Try a trade/i.test(s.text||'')){showHint();T.msg='💡 '+(s.text||'')+' Building is up to you, so tap the build button.';T.render();return;}
  const a=pd.auto?pd.auto():(s.v!==undefined?s:null);if(!a||a.v===undefined){showHint();return;}
- const txt=pfmClean(s.text);T.resolve(a.v);pfmShow(txt,pfmWhy(T.gid,a.v,s.text||''));}
+ const txt=pfmClean(s.text);T.resolve(a.v);pfmShow(txt,s.why||pfmWhy(T.gid,a.v,s.text||''));}
 function showHint(){const pd=T.pending;if(!pd||!pd.suggest)return;const s=pd.suggest();T.sugg=s.mark||null;T.msg='💡 '+(s.text||'Try that.');T.render();}
 T.over=async html=>{if(T.auto){T.lastResult=html;return;}T.active=-1;T.render();const v=await T.modal(html,[{label:'Play again',v:'again'},{label:'Choose another game',v:'menu'}]);if(v==='again')startGame(T.gid,T.n,T.level,true);else showMenu();};
 
@@ -297,7 +297,7 @@ function startGame(gid,n,level,keep){T.token++;setPaused(false);T.pending=null;T
   return G.play(T);};
  const pr=run();T.render();
  return pr.catch(e=>{if(e!==ABORT){console.error(e);if(!T.auto)T.modal('<h3>Oops</h3>Something went wrong with this game. Let\'s start a fresh one.',[{label:'New game',v:1}]).then(()=>startGame(gid,n,level)).catch(()=>{});else throw e;}});}
-const ORDER=['words','hunt','dice','runs','checkers','chess','reversi','backgammon','four','dominoes','mancala','dots','sea','island'];
+const ORDER=['words','hunt','dice','lmr','runs','checkers','chess','reversi','backgammon','four','dominoes','mahjong','mancala','dots','sea','island'];
 const LEVELS=[['Beginner','Computer players make plenty of mistakes. Your possible moves light up, and hints are always there.'],['Intermediate','Solid computer players who see the obvious plays and slip up now and then.'],['Advanced','Sharp computer players who think ahead and rarely slip.']];
 function renderMenu(){const g=$('#games');g.innerHTML='';
  ORDER.forEach(id=>{const G=GAMES[id];const b=h('button',{class:'gcard'+(MENU.gid===id?' on':''),onclick:()=>{MENU.gid=id;if(!MENU.n||MENU.n<G.min||MENU.n>G.max)MENU.n=G.def||G.max;renderMenu();}},h('span',{class:'ic'},G.icon),h('b',{},G.name),h('small',{},G.tag));g.append(b);});
@@ -1058,6 +1058,201 @@ GAMES.dominoes={name:'Dominoes',icon:'🁫',tag:'Match the ends',min:2,max:4,def
    else s.msg=msg;}
   const best=Math.max(...P.map(p=>p.score)),w=P.filter(p=>p.score===best);
   await T.over(`<h3>${w.some(p=>p.human)?'You win!':w.map(p=>p.name).join(' & ')+' wins'}</h3><p>${s.msg}</p>${scoreTable([['Player','Score'],...P.map(p=>[p.name,p.score])])}`);}
+};
+
+/* ===================== MAHJONG ===================== */
+const MJ={SUIT:['Dots','Bamboo','Characters'],SH:['dots','bam','crak'],COL:['#1d4ed8','#15803d','#b91c1c'],WIND:['East','South','West','North'],WL:['E','S','W','N'],DRAG:['Red','Green','White']};
+function mjName(k){if(k<27)return `${k%9+1} ${MJ.SUIT[Math.floor(k/9)]}`;if(k<31)return `${MJ.WIND[k-27]} Wind`;return `${MJ.DRAG[k-31]} Dragon`;}
+function mjEl(k,o={}){const sz=o.sz||34,hh=Math.round(sz*1.3);const e=h('div',{class:'mjt',style:`width:${sz}px;height:${hh}px;font-size:${Math.round(sz*.56)}px;${o.style||''}`});
+ let big,small,col;
+ if(k<27){const s=Math.floor(k/9);big=String(k%9+1);small=MJ.SH[s];col=MJ.COL[s];}
+ else if(k<31){big=MJ.WL[k-27];small='wind';col='#111827';}
+ else{const d=k-31;big=['中','發','▢'][d];small='dragon';col=['#b91c1c','#15803d','#1d4ed8'][d];}
+ e.append(h('b',{style:`color:${col}`},big));if(sz>=24)e.append(h('small',{},small));e.title=mjName(k);return e;}
+const mjCnt=hand=>{const c=new Array(34).fill(0);hand.forEach(t=>c[t.k]++);return c;};
+function mjShanten(c,ex){let best=9;const need=4-ex;
+ const rec=(i,m,t,p)=>{while(i<34&&!c[i])i++;
+  if(i>=34){const tt=Math.min(t,need-m);const v=2*(need-m)-tt-p;if(v<best)best=v;return;}
+  if(best<=-1)return;
+  if(c[i]>=3){c[i]-=3;rec(i,m+1,t,p);c[i]+=3;}
+  if(i<27&&i%9<=6&&c[i+1]&&c[i+2]){c[i]--;c[i+1]--;c[i+2]--;rec(i,m+1,t,p);c[i]++;c[i+1]++;c[i+2]++;}
+  if(c[i]>=2){c[i]-=2;if(!p)rec(i,m,t,1);else rec(i,m,t+1,p);c[i]+=2;}
+  if(i<27&&i%9<=7&&c[i+1]){c[i]--;c[i+1]--;rec(i,m,t+1,p);c[i]++;c[i+1]++;}
+  if(i<27&&i%9<=6&&c[i+2]){c[i]--;c[i+2]--;rec(i,m,t+1,p);c[i]++;c[i+2]++;}
+  c[i]--;rec(i,m,t,p);c[i]++;};
+ rec(0,0,0,0);
+ if(ex===0){let pairs=0,kinds=0;for(let k=0;k<34;k++){if(c[k]>=2)pairs++;if(c[k])kinds++;}const sp=6-pairs+Math.max(0,7-kinds);if(sp<best)best=sp;}
+ return best;}
+function mjIso(c,k){if(c[k]>=2)return 0;if(k>=27)return 3;const r=k%9;let near=false,gap=false;for(const d of [-2,-1,1,2]){if(r+d>=0&&r+d<=8&&c[k+d]){if(Math.abs(d)===1)near=true;else gap=true;}}if(near)return 0;if(gap)return 0.5;return (r===0||r===8)?2.5:2;}
+function mjNear(c,x){if(c[x])return true;if(x>=27)return false;const r=x%9;for(const d of [-2,-1,1,2])if(r+d>=0&&r+d<=8&&c[x+d])return true;return false;}
+function mjVisible(s,me){const v=new Array(34).fill(0);T.players.forEach(p=>{(p.river||[]).forEach(t=>v[t.k]++);(p.melds||[]).forEach(m=>m.tiles.forEach(t=>v[t.k]++));});me.hand.forEach(t=>v[t.k]++);return v;}
+function mjChooseDiscard(p,s,lv){const c=mjCnt(p.hand),ex=p.melds.length;const kinds=[...new Set(p.hand.map(t=>t.k))];
+ if(lv===0&&Math.random()<.35){const t=pick(p.hand);return{t,sh:null};}
+ const vis=lv>=1?mjVisible(s,p):null;let best=null;
+ for(const k of kinds){const iso=mjIso(c,k);c[k]--;const sh=mjShanten(c,ex);let uk=0;
+  if(lv>=1)for(let x=0;x<34;x++){if(!mjNear(c,x))continue;const left=4-vis[x];if(left<=0)continue;c[x]++;if(mjShanten(c,ex)<sh)uk+=left;c[x]--;}
+  c[k]++;const sc=-sh*1000+uk*5+iso*3+(k>=27?1:0);if(!best||sc>best.sc)best={k,sh,uk,sc,iso};}
+ if(lv===1&&oops(lv)){const t=pick(p.hand);return{t,sh:null};}
+ return{t:p.hand.find(t=>t.k===best.k),sh:best.sh,iso:best.iso};}
+function mjSuggestDiscard(p,s){const x=mjChooseDiscard(p,s,2),k=x.t.k,c=mjCnt(p.hand);let why;
+ if(x.sh===0)why='After this discard you\'re just one tile away from Mahjong (ready!). The tiles you keep all work together.';
+ else if(k>=27&&c[k]===1)why='It\'s a lone honor tile. Honors can only make sets of three of a kind, so a single one is hard to use.';
+ else if(x.iso>=2.5)why='It\'s on the edge of its suit (a 1 or a 9) with nothing near it, so it\'s hard to build a set around it.';
+ else if(x.iso>=2)why='Nothing else in your hand is close to it, so it\'s your least useful tile.';
+ else why='Keeping your other tiles leaves you closest to a winning hand, with the most tiles that can still help you.';
+ return{t:x.t,why};}
+function mjAIClaim(p,s,k,canChow,lv){const c=mjCnt(p.hand),ex=p.melds.length;
+ c[k]++;if(mjShanten(c,ex)===-1){c[k]--;return lv===0&&Math.random()<.25?null:{type:'win'};}c[k]--;
+ const cur=mjShanten(c,ex);
+ const after=rm=>{const c2=c.slice();rm.forEach(x=>c2[x]--);let b=9;for(let x=0;x<34;x++)if(c2[x]){c2[x]--;const sh=mjShanten(c2,ex+1);if(sh<b)b=sh;c2[x]++;}return b;};
+ const opts=[];
+ if(c[k]>=2)opts.push({type:'pung',sh:after([k,k]),combo:[k,k,k]});
+ if(canChow&&k<27){const r=k%9;[[-2,-1],[-1,1],[1,2]].forEach(([a,b])=>{if(r+a>=0&&r+b<=8&&c[k+a]&&c[k+b])opts.push({type:'chow',sh:after([k+a,k+b]),combo:[k+a,k,k+b]});});}
+ if(!opts.length)return null;opts.sort((a,b)=>a.sh-b.sh||(a.type==='pung'?-1:1));const o=opts[0];
+ const honor=o.type==='pung'&&(k>=31||k===27||k===27+p.wind);
+ if(o.sh<cur||(honor&&lv>=1&&o.sh<=cur)){if(lv===0&&Math.random()<.4)return null;return o;}
+ return null;}
+async function mjHumanClaim(T,q,s,from,k,canChow){const c=mjCnt(q.hand),ex=q.melds.length,btns=[];
+ c[k]++;const win=mjShanten(c,ex)===-1;c[k]--;
+ if(win)btns.push({label:'🀄 Mahjong!',v:{type:'win'}});
+ if(c[k]>=2)btns.push({label:`Pung (three ${mjName(k)})`,v:{type:'pung',combo:[k,k,k]}});
+ if(canChow&&k<27){const r=k%9;[[-2,-1],[-1,1],[1,2]].forEach(([a,b])=>{if(r+a>=0&&r+b<=8&&c[k+a]&&c[k+b]){const combo=[k+a,k,k+b];btns.push({label:`Chow ${combo.map(x=>x%9+1).join('-')} ${MJ.SH[Math.floor(k/9)]}`,v:{type:'chow',combo}});}});}
+ if(!btns.length)return null;
+ btns.push({label:'Pass',v:'pass',quiet:true});
+ const ai=mjAIClaim(q,s,k,canChow,2);
+ const v=await T.ask({prompt:`${T.pname(from)} discarded the ${mjName(k)}. Do you want it?`,buttons:btns,
+  suggest:()=>{if(!ai)return{v:'pass',text:'Pass.',why:'Taking it wouldn\'t bring you closer to Mahjong, and claiming a set shows your tiles to everyone.'};
+   if(ai.type==='win')return{v:ai,text:'Call Mahjong!',why:'This tile completes your hand: four sets and a pair. You win the hand!'};
+   const b=btns.find(x=>x.v&&x.v.type===ai.type&&(!x.v.combo||x.v.combo.join()===ai.combo.join()));
+   if(ai.type==='pung')return{v:b?b.v:ai,text:`Pung the ${mjName(k)}.`,why:'You already hold two of these, so this makes a set of three and gets you closer to Mahjong.'};
+   return{v:b?b.v:ai,text:`Chow the ${mjName(k)} (${ai.combo.map(x=>x%9+1).join('-')}).`,why:'It completes a run of three in a row with two tiles you already hold. You can only chow a tile from the player right before you.'};},
+  auto:()=>({v:ai||'pass'})});
+ return v==='pass'?null:v;}
+function mjDecomp(c0,sets,mode){const c=c0.slice();const rec=(m,p)=>{let i=0;while(i<34&&!c[i])i++;if(i>=34)return m===sets&&p;
+ if(!p&&c[i]>=2){c[i]-=2;const ok=rec(m,true);c[i]+=2;if(ok)return true;}
+ if(mode==='pung'&&c[i]>=3){c[i]-=3;const ok=rec(m+1,p);c[i]+=3;if(ok)return true;}
+ if(mode==='chow'&&i<27&&i%9<=6&&c[i+1]&&c[i+2]){c[i]--;c[i+1]--;c[i+2]--;const ok=rec(m+1,p);c[i]++;c[i+1]++;c[i+2]++;if(ok)return true;}
+ return false;};return rec(0,false);}
+function mjScore(p,res){const items=[['Mahjong',1]];const cAll=mjCnt(p.hand),melds=p.melds;
+ if(res.self)items.push(['Won on your own draw',1]);
+ if(!melds.length)items.push(['Concealed hand (no claimed sets)',1]);
+ const allK=[...p.hand.map(t=>t.k),...melds.flatMap(m=>m.tiles.map(t=>t.k))];
+ const suits=new Set(allK.filter(k=>k<27).map(k=>Math.floor(k/9))),hon=allK.some(k=>k>=27);
+ if(suits.size===1&&!hon)items.push(['Pure one suit',6]);else if(suits.size<=1&&hon)items.push(['Mixed one suit (one suit plus honors)',3]);
+ const seven=!melds.length&&cAll.every(x=>x%2===0)&&!mjCanStd(cAll,4);
+ if(seven){items.push(['Seven pairs',3]);return items;}
+ if(melds.every(m=>m.type==='pung')&&mjDecomp(cAll,4-melds.length,'pung'))items.push(['All pungs',3]);
+ else if(melds.every(m=>m.type==='chow')&&mjDecomp(cAll,4-melds.length,'chow'))items.push(['All chows',1]);
+ const honP=[];for(let k=27;k<34;k++)if(cAll[k]>=3)honP.push(k);melds.forEach(m=>{if(m.type==='pung'&&m.tiles[0].k>=27)honP.push(m.tiles[0].k);});
+ honP.forEach(k=>{if(k>=31)items.push([`${mjName(k)} pung`,1]);else{if(k===27)items.push(['East Wind pung (round wind)',1]);if(k===27+p.wind)items.push(['Your seat wind pung',1]);}});
+ return items;}
+function mjCanStd(c0,sets){const c=c0.slice();const rec=(m,p)=>{let i=0;while(i<34&&!c[i])i++;if(i>=34)return m===sets&&p;
+ if(!p&&c[i]>=2){c[i]-=2;const ok=rec(m,true);c[i]+=2;if(ok)return true;}
+ if(c[i]>=3){c[i]-=3;const ok=rec(m+1,p);c[i]+=3;if(ok)return true;}
+ if(i<27&&i%9<=6&&c[i+1]&&c[i+2]){c[i]--;c[i+1]--;c[i+2]--;const ok=rec(m+1,p);c[i]++;c[i+1]++;c[i+2]++;if(ok)return true;}
+ return false;};return rec(0,false);}
+const mjHandHTML=p=>{const w=h('div',{style:'display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0'});const g=h('span',{class:'mjset'});p.hand.slice().sort((a,b)=>a.k-b.k).forEach(t=>g.append(mjEl(t.k,{sz:26})));w.append(g);p.melds.forEach(m=>{const x=h('span',{class:'mjset claimed'});m.tiles.forEach(t=>x.append(mjEl(t.k,{sz:26})));w.append(x);});return w.outerHTML;};
+GAMES.mahjong={name:'Mahjong',icon:'🀄',tag:'Draw, discard and build sets',min:4,max:4,playersText:'4 players: you and 3 computer players',
+ blurb:'The classic four-player tile game. Draw and discard tiles to build four sets and a pair. Claim other players\' discards to finish faster, and call Mahjong when your hand is complete!',
+ rules:'<p>We play simplified <b>Hong Kong-style</b> Mahjong with 136 tiles: three suits numbered 1 to 9 (<b>Dots</b>, <b>Bamboo</b> and <b>Characters</b>), four <b>Winds</b> (East, South, West, North) and three <b>Dragons</b> (Red 中, Green 發, White ▢). There are four of each tile. We leave out flowers and kongs (four of a kind) to keep it simple.</p><p><b>The goal:</b> make a hand of <b>four sets and one pair</b> (14 tiles). A set is a <b>pung</b> (three of the same tile, like three 7 Dots) or a <b>chow</b> (three in a row in one suit, like 4-5-6 Bamboo). Honors (winds and dragons) can only make pungs. <b>Seven pairs</b> also wins.</p><p><b>Your turn:</b> draw a tile from the wall, then discard one, so you always hold 13 tiles between turns.</p><p><b>Claiming:</b> when someone discards, you can take it to finish a set. Anyone can claim a tile for a <b>pung</b>. Only the next player can claim it for a <b>chow</b>. Claimed sets are laid face up. Then you discard. If you need the tile to win, call <b>Mahjong</b>; a win beats a pung, and a pung beats a chow.</p><p><b>Scoring:</b> Mahjong 1 point, plus: won on your own draw +1, concealed hand (nothing claimed) +1, all pungs +3, seven pairs +3, mixed one suit (one suit plus honors) +3, pure one suit +6, all chows +1, each dragon pung +1, East Wind pung +1, your seat wind pung +1.</p><p>If the wall runs out, nobody wins that hand. We play <b>4 hands</b> (everyone is East, the dealer, once). Highest score wins.</p><p>Tap a tile to pick it, then tap it again or press Discard.</p>',
+ colorOf:p=>COLORS[p.i],showMe:false,
+ seatInfo:p=>`${MJ.WIND[p.wind||0]} · ${p.score||0} pts`,
+ youInfo(){const me=T.players[0];if(!me.hand)return '';let t=`Your seat: <b>${MJ.WIND[me.wind||0]}</b> · Score: <b>${me.score||0}</b>`;
+  if(T.level===0&&me.hand.length){const sh=mjShanten(mjCnt(me.hand),me.melds.length);t+=sh<=0?' · <b style="color:#16a34a">You\'re one tile from Mahjong!</b>':` · About <b>${sh}</b> good tile${sh>1?'s':''} away from being ready`;}return t;},
+ scoreText(){const s=this.state;return s.hand?`Hand ${s.hand} of 4 · `+T.players.map(p=>`${p.name}: ${p.score||0}`).join(' · '):'';},
+ renderBoard(el){const s=this.state,P=T.players;if(!s.wall)return;
+  el.append(h('div',{class:'cinfo',html:`Round wind: <b>East</b> · Wall: <b>${s.wall.length}</b> tiles left`}));
+  const box=h('div',{class:'mjboard'});
+  P.forEach((p,i)=>{const row=h('div',{class:'mjrow'+(T.active===i?' act':'')});
+   row.append(h('div',{class:'mjwho',html:`${p.human?'You':(p.emoji?p.emoji+' ':'')+p.name}<small>${MJ.WIND[p.wind||0]}${p.wind===0?' · dealer':''}</small>`}));
+   const ml=h('div',{class:'mjmelds'});p.melds.forEach(m=>{const g=h('span',{class:'mjset claimed'});m.tiles.forEach(t=>g.append(mjEl(t.k,{sz:22})));ml.append(g);});
+   if(!p.human)ml.append(h('span',{class:'mjcount'},`${p.hand.length} tiles in hand`));else if(!p.melds.length)ml.append(h('span',{class:'mjcount'},'No claimed sets yet'));
+   row.append(ml);
+   const rv=h('div',{class:'mjriver'});p.river.forEach(t=>{const e=mjEl(t.k,{sz:20});if(s.last&&s.last.t===t)e.classList.add('last');rv.append(e);});
+   if(!p.river.length)rv.append(h('span',{class:'mjcount'},'Discards show here'));row.append(rv);box.append(row);});
+  el.append(box);if(s.msg)el.append(h('div',{class:'cinfo'},s.msg));},
+ renderTray(el){const s=this.state,me=T.players[0],pd=T.pending;if(!me.hand)return;const can=pd&&pd.mjDisc;
+  const drawn=me.hand.find(t=>t.id===s.drawnId);const rest=me.hand.filter(t=>t!==drawn).sort((a,b)=>a.k-b.k||a.id-b.id);
+  const mk=t=>{const sel=s.selId===t.id,sug=T.sugg&&T.sugg.id===t.id;const e=mjEl(t.k,{sz:36,style:`margin:0 2px;transition:transform .12s;${sel?'transform:translateY(-10px);outline:3px solid #f5c542;':''}${sug?'outline:3px dashed #16a34a;':''}${!can?'':'cursor:pointer;'}`});
+   if(can)e.onclick=()=>{if(s.selId===t.id)T.resolve(t);else{s.selId=t.id;T.render();}};return e;};
+  const wrap=h('div',{style:'display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:2px'});rest.forEach(t=>wrap.append(mk(t)));
+  if(drawn){wrap.append(h('span',{style:'width:12px'}));const d=h('div',{style:'display:flex;flex-direction:column;align-items:center'});d.append(mk(drawn),h('small',{style:'font-size:10px;color:#fde7c7'},'new'));wrap.append(d);}
+  el.append(wrap);},
+ async play(T){const G=this,s=G.state,P=T.players;P.forEach(p=>{p.score=0;p.hand=[];p.melds=[];p.river=[];p.wind=0;});
+  for(let hn=0;hn<4;hn++){s.hand=hn+1;const dealer=hn%4;
+   P.forEach((p,i)=>{p.hand=[];p.melds=[];p.river=[];p.wind=(i-dealer+4)%4;});s.wall=null;s.last=null;s.selId=null;s.drawnId=null;s.msg='';
+   T.active=dealer;T.render();
+   if(P[dealer].human)await T.ask({prompt:'You\'re East, the dealer, this hand.',buttons:[{label:'🔀 Shuffle and build the wall',v:1}],auto:()=>({v:1})});else{T.say(dealer,'Shuffling the tiles…',1300);await T.wait(900);}
+   let id=0;const all=[];for(let k=0;k<34;k++)for(let j=0;j<4;j++)all.push({k,id:id++});s.wall=shuffle(all);
+   for(let r=0;r<13;r++)for(let j=0;j<4;j++)P[(dealer+j)%4].hand.push(s.wall.pop());T.render();
+   let cur=dealer,needDraw=true,result=null,guard=0;
+   while(!result&&guard++<600){const p=P[cur];T.active=cur;
+    if(needDraw){if(!s.wall.length){result={draw:true};break;}const t=s.wall.pop();p.hand.push(t);s.drawnId=p.human?t.id:null;T.render();
+     if(mjShanten(mjCnt(p.hand),p.melds.length)===-1){let win=true;
+      if(p.human){const v=await T.ask({prompt:'Your hand is complete!',buttons:[{label:'🀄 Mahjong!',v:'win'},{label:'Keep playing',v:'no',quiet:true}],suggest:()=>({v:'win',text:'Call Mahjong!',why:'Your hand has four sets and a pair (or seven pairs), so you win this hand.'}),auto:()=>({v:'win'})});win=v==='win';}
+      else if(T.level===0&&Math.random()<.15)win=false;
+      if(win){result={w:cur,self:true};break;}}}
+    needDraw=true;let d;
+    if(p.human){d=await T.ask({prompt:'Tap a tile to discard it (tap it again, or press Discard).',mjDisc:true,
+      buttons:[{label:'Discard',v:'d',ok:()=>!!s.selId&&p.hand.some(x=>x.id===s.selId),act:()=>T.resolve(p.hand.find(x=>x.id===s.selId))}],
+      suggest:()=>{const x=mjSuggestDiscard(p,s);return{mark:{id:x.t.id},v:x.t,text:`Discard the ${mjName(x.t.k)}.`,why:x.why};},auto:()=>({v:mjChooseDiscard(p,s,2).t})});}
+    else{await T.wait(550);d=(await T.think(()=>mjChooseDiscard(p,s,T.level))).t;}
+    p.hand=p.hand.filter(x=>x.id!==d.id);s.selId=null;s.drawnId=null;p.river.push(d);s.last={p:cur,t:d};
+    if(!p.human)T.note(`${p.name} discards the ${mjName(d.k)}.`);
+    T.render();await T.wait(450);
+    const claims=[];
+    for(let j=1;j<4;j++){const qi=(cur+j)%4,q=P[qi],canChow=j===1;let cl;
+     if(q.human)cl=await mjHumanClaim(T,q,s,p,d.k,canChow);else cl=mjAIClaim(q,s,d.k,canChow,T.level);
+     if(cl)claims.push({...cl,qi,j});}
+    const pr={win:0,pung:1,chow:2};claims.sort((a,b)=>pr[a.type]-pr[b.type]||a.j-b.j);const cl=claims[0];
+    if(cl){const q=P[cl.qi];p.river.pop();s.last=null;
+     if(cl.type==='win'){q.hand.push(d);result={w:cl.qi,from:cur};T.say(cl.qi,'Mahjong!',1800);break;}
+     const need=cl.combo.slice();need.splice(need.indexOf(d.k),1);const used=[];
+     need.forEach(k=>{const t=q.hand.find(x=>x.k===k&&!used.includes(x));used.push(t);});
+     q.hand=q.hand.filter(x=>!used.includes(x));q.melds.push({type:cl.type,tiles:[...used,d].sort((a,b)=>a.k-b.k),from:cur});
+     T.say(cl.qi,cl.type==='pung'?'Pung!':'Chow!',1300);T.note(`${T.pname(q)} ${q.human?'claim':'claims'} the ${mjName(d.k)} for a ${cl.type}.`);
+     cur=cl.qi;needDraw=false;T.render();await T.wait(500);continue;}
+    cur=(cur+1)%4;}
+   T.active=-1;let msg,extra='';
+   if(!result||result.draw){msg='The wall ran out. Nobody wins this hand.';}
+   else{const w=P[result.w],items=mjScore(w,result),pts=sum(items.map(x=>x[1]));w.score+=pts;
+    msg=`${w.human?'You win':w.name+' wins'} this hand${result.self?' on '+(w.human?'your':'their')+' own draw':' with '+(P[result.from].human?'your':P[result.from].name+'\'s')+' discard'} for <b>${pts}</b> point${pts>1?'s':''}.`;
+    extra=mjHandHTML(w)+scoreTable([['Scoring','Points'],...items]);}
+   T.render();await T.wait(600);
+   if(hn<3)await T.modal(`<h3>Hand ${hn+1} of 4</h3><p>${msg}</p>${extra}${scoreTable([['Player','Score'],...P.map(q=>[q.name,q.score])])}`,[{label:'Next hand',v:1}]);
+   else s.msg=msg+extra;}
+  const best=Math.max(...P.map(p=>p.score)),w=P.filter(p=>p.score===best);
+  await T.over(`<h3>${w.some(p=>p.human)?'You win!':w.map(p=>p.name).join(' & ')+(w.length>1?' tie':' wins')}</h3><p>${s.msg||''}</p>${scoreTable([['Player','Score'],...P.map(p=>[p.name,p.score])])}`);}
+};
+
+/* ===================== LMR ===================== */
+const LMR_F=['L','M','R','•','•','•'];
+function lmrDie(f,sz){return h('div',{class:'lmrd'+(f==='•'?' dot':''),style:`width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.5)}px`},f==='•'?'●':f);}
+GAMES.lmr={name:'LMR',icon:'⭐',tag:'Left · Middle · Right',min:3,max:4,def:4,playersNote:'3 or 4 players: you and computer players.',
+ blurb:'Everyone starts with 3 stars. Roll a die for each star you hold: L passes one left, M puts one in the middle pot, R passes one right, and a dot means keep it. The last player holding stars wins the pot!',
+ rules:'<p>Everyone starts with <b>3 stars</b> ⭐. On your turn, roll one die for each star you have, up to <b>3 dice</b>.</p><p>Each die tells you what to do with one star:</p><ul><li><b>L</b>: pass a star to the player on your <b>left</b> (the next player).</li><li><b>M</b>: put a star in the <b>middle</b> pot. It stays there.</li><li><b>R</b>: pass a star to the player on your <b>right</b> (the player before you).</li><li><b>●</b> (dot): <b>keep</b> that star.</li></ul><p>Run out of stars? You\'re still in the game! Someone may pass you a star. You just skip your turns while you have none.</p><p>The last player holding stars <b>wins the middle pot</b> and the game.</p><p>It\'s all luck, so anyone can win, kids and grandparents alike.</p>',
+ colorOf:p=>COLORS[p.i],showMe:true,
+ seatInfo:p=>`${p.stars??3} ⭐`,
+ youInfo(){const P=T.players,n=P.length,me=P[0];return `You have <b>${me.stars??3}</b> ⭐ · Your left: <b>${P[1].name}</b> · Your right: <b>${P[n-1].name}</b>`;},
+ scoreText(){const s=this.state;return s.pot!=null?`Middle pot: ${s.pot} ⭐`:'';},
+ renderBoard(el){const s=this.state,P=T.players;if(s.pot==null)return;const wrap=h('div',{class:'lmrwrap'});
+  wrap.append(h('div',{class:'lmrpot',html:`<div>Middle pot</div><b>${s.pot}</b> ⭐`}));
+  if(s.roll){const row=h('div',{class:'lmrroll'});s.roll.faces.forEach(f=>row.append(lmrDie(f,56)));wrap.append(h('div',{class:'cinfo'},`${T.pname(P[s.roll.p])} rolled:`),row,h('div',{class:'lmrlines',html:s.lines.map(x=>`<div>${x}</div>`).join('')}));}
+  else wrap.append(h('div',{class:'cinfo'},'Dice: L = pass left · M = middle pot · R = pass right · ● = keep'));
+  el.append(wrap);},
+ async play(T){const s=this.state,P=T.players,n=P.length;P.forEach(p=>p.stars=3);s.pot=0;s.roll=null;s.lines=[];T.render();
+  let cur=await T.whoFirst('🎲 Roll for who goes first'),guard=0;
+  while(P.filter(p=>p.stars>0).length>1&&guard++<800){const p=P[cur];T.active=cur;T.render();
+   if(p.stars===0){T.note(`${T.pname(p)} ${p.human?'have':'has'} no stars, so ${p.human?'you skip':'skips'} this turn.`);await T.wait(700);cur=(cur+1)%n;continue;}
+   const nd=Math.min(3,p.stars),dl=`${nd} ${nd===1?'die':'dice'}`;
+   if(p.human)await T.ask({prompt:`Your turn! Roll ${dl}.`,buttons:[{label:`🎲 Roll ${dl}`,v:1}],suggest:()=>({v:1,text:`Roll ${dl}.`,why:'LMR is all luck. You roll one die for each star you hold, up to 3, and the dice decide where your stars go.'}),auto:()=>({v:1})});
+   else await T.wait(650);
+   const faces=range(nd).map(()=>pick(LMR_F)),L=P[(cur+1)%n],Rt=P[(cur-1+n)%n];s.roll={p:cur,faces};s.lines=[];
+   faces.forEach(f=>{if(f==='L'){p.stars--;L.stars++;s.lines.push(`L: a star goes left to ${T.pname(L)}`);}else if(f==='R'){p.stars--;Rt.stars++;s.lines.push(`R: a star goes right to ${T.pname(Rt)}`);}else if(f==='M'){p.stars--;s.pot++;s.lines.push('M: a star goes into the middle pot');}else s.lines.push('●: keep a star');});
+   if(!p.human)T.say(cur,faces.map(f=>f==='•'?'●':f).join(' '),1500);
+   T.render();await T.wait(1400);cur=(cur+1)%n;}
+  const w=P.find(p=>p.stars>0)||P[0];
+  await T.over(`<h3>${w.human?'You win!':w.name+' wins!'}</h3><p>${w.human?'You were':w.name+' was'} the last player holding stars, so ${w.human?'you take':'takes'} the middle pot of <b>${s.pot}</b> ⭐.</p>${scoreTable([['Player','Stars left'],...P.map(p=>[p.name,p.stars])])}`);}
 };
 
 /* ===================== DOTS AND BOXES ===================== */
