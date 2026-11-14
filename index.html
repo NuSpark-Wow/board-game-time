@@ -245,8 +245,37 @@ function renderInner(){const G=T.G,P=T.players;
  const tr=$('#ytray');tr.innerHTML='';if(G.renderTray)G.renderTray(tr);
  const bb=$('#ybtns');bb.innerHTML='';
  if(pd){(pd.buttons||[]).forEach((b,i)=>{const en=!b.ok||b.ok();bb.append(h('button',{class:'yb'+(b.quiet?' quiet':'')+(i===0&&!pd.noMain&&!b.quiet?' main':''),onclick:()=>{if(en)(b.act?b.act():T.resolve(b.v));},...(en?{}:{disabled:'disabled'}),html:b.label}));});
-  if(pd.suggest)bb.append(h('button',{class:'yb hint',onclick:showHint},'💡 Hint'));}
+  if(pd.suggest)bb.append(h('button',{class:'yb hint',onclick:showHint},'💡 Hint'));if(pd&&pd.suggest&&!T.auto)bb.append(h('button',{class:'yb hint pfmb',onclick:playForMe},'🤖 Play for me'));}
 }
+/* ---------- Play for me ---------- */
+function pfmBox(){let b=document.getElementById('pfm');if(b)return b;b=document.createElement('div');b.id='pfm';b.innerHTML='<div class="pfm-card"><div class="pfm-h">🤖 I played for you</div><div class="pfm-b" id="pfmBody"></div><button class="btn primary" id="pfmOk">Got it, keep playing</button><div class="pfm-n">The game is paused until you tap the button.</div></div>';document.body.append(b);
+ const st=document.createElement('style');st.textContent='#pfm{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding:70px 14px 14px;background:rgba(10,15,25,.35)}#pfm .pfm-card{background:#fff;color:#1d2433;max-width:440px;width:100%;border-radius:16px;padding:16px 18px;box-shadow:0 12px 30px rgba(0,0,0,.35);border-top:6px solid #c99a2e;font-size:16px;line-height:1.45}#pfm .pfm-h{font-weight:800;font-size:19px;margin-bottom:8px}#pfm .pfm-b p{margin:6px 0}#pfm .pfm-b b{color:#1f2a44}#pfm .btn{margin-top:10px;width:100%;font-size:17px;padding:10px}#pfm .pfm-n{font-size:12px;color:#6b7280;text-align:center;margin-top:6px}';document.head.append(st);
+ b.querySelector('#pfmOk').onclick=()=>{b.style.display='none';setPaused(false);};return b;}
+function pfmShow(idea,why){const b=pfmBox();const esc=t=>String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+ b.querySelector('#pfmBody').innerHTML=(idea?`<p><b>The play:</b> ${esc(idea)}</p>`:'')+(why?`<p><b>Why:</b> ${esc(why)}</p>`:'')+(!idea&&!why?'<p>I made the best move I could find for you.</p>':'');
+ setPaused(true);b.style.display='flex';}
+
+function pfmClean(t){return String(t||'').replace(/ \(green squares?\)/g,'').replace(/ marked in green/g,'').replace(/ Draw the green dashed line\./,'').replace(/^Play the green square\./,'Play that square.').replace(/ \(tap Undo[^)]*\)/,'').replace(/^Best play from the start of your turn: /,'Moved ').replace(/The green circle/,'That spot').replace(/The green spot/,'That spot');}
+function pfmWhy(gid,v,txt){const st=T.G&&T.G.state;
+ switch(gid){
+  case 'words':return 'It was the highest-scoring word the computer could find with your tiles.';
+  case 'checkers':return v&&v.caps&&v.caps.length?'In checkers you must jump when you can, and a jump takes one of their pieces off the board.':v&&v.promo?'It reaches the far side, so your piece becomes a king that can move both ways.':'The computer looked a few moves ahead and picked the move that comes out best for you.';
+  case 'chess':return v&&v.cap?'Capturing a piece gives you more material than your opponent, and it was safe to do here.':'The computer looked a few moves ahead and picked the strongest move it found.';
+  case 'backgammon':return 'It was the best way the computer found to use your dice, moving checkers toward home while staying safe.';
+  case 'four':{try{if(typeof v==='number'&&st&&st.b){const b=st.b.slice(),r=f4Drop(b,v);if(r>=0){b[r*7+v]=1;if(f4Win(b,1))return 'This makes four in a row. You win!';b[r*7+v]=2;if(f4Win(b,2))return 'Your opponent was one disc away from four in a row right here, so this blocks them.';}}}catch(e){}return 'Middle columns give you the most ways to connect four, and this spot sets you up for future threats.';}
+  case 'dominoes':return 'This tile fits an open end, and it was the best choice the computer found for keeping your hand strong.';
+  case 'dots':return /safe/.test(txt)?'Drawing a third side of a box would hand your opponent a free box, so this line avoids that.':/box/i.test(txt)?'Closing a box scores a point and gives you another turn.':'Every line gives something away now, so this one gives away the least.';
+  case 'mancala':return /store/.test(txt)?'Your last seed lands in your store, which earns a free turn.':/captures/.test(txt)?'Your last seed lands in an empty pit on your side, which captures the seeds across from it.':'It keeps your seeds safe and sets up future captures.';
+  case 'reversi':return /corner/.test(txt)?'Corners can never be flipped back, so they are the most valuable squares on the board.':'It flips the most useful discs without giving your opponent an easy corner.';
+  case 'sea':return /hit!|open water/.test(txt)?'You always answer truthfully: a shot that lands on one of your ships is a hit, and anything else is a miss.':'It aims where a ship is most likely to be, often right next to an earlier hit.';
+  case 'hunt':return 'These are real words hidden in the grid. Each must be 3 letters or more, made from touching letters.';
+  case 'runs':return 'Playing tiles empties your rack, and the first player with an empty rack wins.';
+  case 'dice':return /Hold/.test(txt)?'Keeping these dice gives you the best chance at a high-scoring combo with the rolls you have left.':/Roll first/.test(txt)?'Rolling is always the first step of your turn.':/Score/.test(txt)?'This box gives the most points for this roll, and it saves your other boxes for later.':'';
+  default:return '';}}
+function playForMe(){const pd=T.pending;if(!pd||!pd.suggest)return;const s=pd.suggest()||{};
+ if(T.gid==='island'&&/build|away from|Try a trade/i.test(s.text||'')){showHint();T.msg='💡 '+(s.text||'')+' Building is up to you, so tap the build button.';T.render();return;}
+ const a=pd.auto?pd.auto():(s.v!==undefined?s:null);if(!a||a.v===undefined){showHint();return;}
+ const txt=pfmClean(s.text);T.resolve(a.v);pfmShow(txt,pfmWhy(T.gid,a.v,s.text||''));}
 function showHint(){const pd=T.pending;if(!pd||!pd.suggest)return;const s=pd.suggest();T.sugg=s.mark||null;T.msg='💡 '+(s.text||'Try that.');T.render();}
 T.over=async html=>{if(T.auto){T.lastResult=html;return;}T.active=-1;T.render();const v=await T.modal(html,[{label:'Play again',v:'again'},{label:'Choose another game',v:'menu'}]);if(v==='again')startGame(T.gid,T.n,T.level,true);else showMenu();};
 
