@@ -27,7 +27,7 @@ h2{font-family:Georgia,serif;font-size:20px;margin:20px 0 10px}
 .btn.on,.btn.primary{background:var(--navy);color:#fff}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:#1d2433}
 .btn.sm{padding:5px 12px;font-size:14px}
-.desc{font-size:13.5px;color:var(--muted);margin-top:6px}.akanote{margin:2px 0 10px;padding:8px 12px;background:#fdf3dc;border:1px solid #ecd59a;border-radius:9px;color:#3b2a1e;font-size:14px}.aka{margin:8px 0 2px;padding:7px 11px;background:#fdf3dc;border:1px solid #ecd59a;border-radius:9px;color:#3b2a1e;font-size:14px}.akafine{font-size:11.5px!important;color:#8a8170!important;line-height:1.4;margin:6px 0 0!important}
+.desc{font-size:13.5px;color:var(--muted);margin-top:6px}.akanote{margin:2px 0 10px;padding:8px 12px;background:#fdf3dc;border:1px solid #ecd59a;border-radius:9px;color:#3b2a1e;font-size:14px}.seaaim{animation:seaAim 1s ease-in-out infinite;position:relative;z-index:1}@keyframes seaAim{0%,100%{box-shadow:inset 0 0 0 3px #fde047,0 0 0 2px #fde047}50%{box-shadow:inset 0 0 0 3px #fde047,0 0 10px 4px #fde047}}.aka{margin:8px 0 2px;padding:7px 11px;background:#fdf3dc;border:1px solid #ecd59a;border-radius:9px;color:#3b2a1e;font-size:14px}.akafine{font-size:11.5px!important;color:#8a8170!important;line-height:1.4;margin:6px 0 0!important}
 .start{margin:22px 0 6px;width:100%;padding:14px;font-size:17px}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding:10px 16px 30px}
 /* game screen */
@@ -739,8 +739,8 @@ GAMES.chess={name:'Chess',icon:'♞',tag:'The classic strategy game',min:2,max:2
    const cell=h('div',{class:'sq',style:`width:${cs}px;height:${cs}px;background:${light?'#f0d9b5':'#b58863'}${i===inChk?';background:radial-gradient(#ef4444,#b91c1c 70%)':''}`});
    if(s.last&&(s.last.from===i||s.last.to===i))cell.classList.add('last');
    if(p){const w=chCol(p)==='w';cell.append(h('span',{style:`font-size:${cs*.78}px;line-height:1;color:${w?'#fff':'#111'};text-shadow:${w?'0 0 2px #000,0 0 1px #000,0 1px 2px #000':'0 0 1px #fff'};font-family:"Segoe UI Symbol","Apple Symbols","Noto Sans Symbols2",serif`},CH.GLYPH[p.toLowerCase()]+'︎'));}
-   if((flip?7-r:r)===7)cell.append(h('span',{style:`position:absolute;right:2px;bottom:0;font-size:9px;color:${light?'#b58863':'#f0d9b5'}`},'abcdefgh'[c]));
-   if((flip?7-c:c)===0)cell.append(h('span',{style:`position:absolute;left:2px;top:0;font-size:9px;color:${light?'#b58863':'#f0d9b5'}`},String(8-r)));
+   if((flip?7-r:r)===7)cell.append(h('span',{style:`position:absolute;right:2px;bottom:0;font-size:11px;font-weight:700;color:${light?'#b58863':'#f0d9b5'}`},'abcdefgh'[c]));
+   if((flip?7-c:c)===0)cell.append(h('span',{style:`position:absolute;left:2px;top:0;font-size:11px;font-weight:700;color:${light?'#b58863':'#f0d9b5'}`},String(8-r)));
    if(pd&&pd.chess){const d=dests.find(m=>m.to===i);
     if(i===s.sel)cell.classList.add('selsq');
     if(d){cell.classList.add(st.b[i]?'hlcap':'hl','tap');cell.onclick=()=>chTap(i);}
@@ -1445,16 +1445,17 @@ GAMES.sea={name:'Sea Battle',icon:'🚢',tag:'Find and sink the fleet',min:2,max
  colorOf:p=>p.human?'#2563eb':'#dc2626',showMe:true,
  seatInfo(p){const s=this.state;if(!s.F)return '';const F=s.F[p.i];return `${sbLeft(F).length} of 5 ships afloat`;},
  scoreText(){const s=this.state;return s.F?`Shots fired: You ${s.F[1].shots.filter(Boolean).length} · ${T.players[1].name} ${s.F[0].shots.filter(Boolean).length}`:'';},
- renderBoard(el){const s=this.state;if(!s.F)return;const pd=T.pending,big=fitCell(11.4,30,24),small=Math.max(13,Math.floor(big*.55));
-  const grid=(F,cs,showShips,click)=>{const lab=click||showShips&&cs>=20;const g=h('div',{class:'grid',style:`grid-template-columns:${click?`${Math.round(cs*.6)}px `:''}repeat(10,${cs}px);gap:1px;background:#0c4a6e;padding:3px`});
-   if(click){g.append(h('div',{}));for(let c=0;c<10;c++)g.append(h('div',{style:`text-align:center;font-size:${cs*.4}px;color:#bae6fd;font-weight:700`},'ABCDEFGHIJ'[c]));}
-   for(let i=0;i<100;i++){if(click&&i%10===0)g.append(h('div',{style:`display:flex;align-items:center;justify-content:center;font-size:${cs*.38}px;color:#bae6fd;font-weight:700`},String(i/10+1)));const sh=F.shots[i],ship=F.own[i]>=0,sunk=ship&&F.ships[F.own[i]].hits===F.ships[F.own[i]].len;
+ renderBoard(el){const s=this.state;if(!s.F)return;const pd=T.pending,big=fitCell(11.4,30,24),small=Math.max(16,Math.floor(big*.7));
+  const grid=(F,cs,showShips,click)=>{const lab=click||showShips&&cs>=20;const lf=Math.max(11,Math.round(cs*.42)),lw=Math.max(16,Math.round(cs*.6));const g=h('div',{class:'grid',style:`grid-template-columns:${lw}px repeat(10,${cs}px);gap:1px;background:#0c4a6e;padding:3px`});
+   g.append(h('div',{}));for(let c=0;c<10;c++)g.append(h('div',{style:`text-align:center;font-size:${lf}px;line-height:1.5;color:#bae6fd;font-weight:700`},'ABCDEFGHIJ'[c]));
+   for(let i=0;i<100;i++){if(i%10===0)g.append(h('div',{style:`display:flex;align-items:center;justify-content:center;font-size:${lf}px;color:#bae6fd;font-weight:700`},String(i/10+1)));const sh=F.shots[i],ship=F.own[i]>=0,sunk=ship&&F.ships[F.own[i]].hits===F.ships[F.own[i]].len;
     const cell=h('div',{class:'sq',style:`width:${cs}px;height:${cs}px;background:${showShips&&ship?(sh===2?'#7f1d1d':'#64748b'):sunk&&sh===2?'#7f1d1d':'#0ea5e9'};font-size:${cs*.55}px;color:#fff`});
     if(sh===1)cell.append(h('div',{style:`width:${cs*.25}px;height:${cs*.25}px;border-radius:50%;background:#e0f2fe`}));
     if(sh===2)cell.append(h('span',{style:'line-height:1'},'💥'));
     if(s.lastShot&&s.lastShot.F===F&&s.lastShot.i===i)cell.style.boxShadow='inset 0 0 0 2px #fde047';
     if(click&&!sh){cell.classList.add('tap');cell.onclick=()=>T.resolve(i);}
     if(click&&T.sugg&&T.sugg.i===i)cell.classList.add('sugg');
+    if(!click&&F===s.F[0]&&s.aim===i)cell.classList.add('seaaim');
     g.append(cell);}return g;};
   const legend=F=>F.ships.map(x=>`<span style="${x.hits===x.len?'text-decoration:line-through;opacity:.6':''}">${x.nm} ${x.len}</span>`).join(' · ');
   el.append(h('div',{class:'cinfo',html:`${T.players[1].name}'s ocean: ${legend(s.F[1])}`}),grid(s.F[1],big,s.reveal,pd&&pd.sea),
@@ -1465,17 +1466,17 @@ GAMES.sea={name:'Sea Battle',icon:'🚢',tag:'Find and sink the fleet',min:2,max
   let cur=await T.whoFirst(),winner=null,guard=0;
   while(winner==null&&guard++<220){const p=P[cur];T.active=cur;T.render();const tgt=s.F[1-cur];let i;
    if(p.human){i=await T.ask({prompt:`Fire! Tap a square on ${P[1].name}'s ocean.`,sea:true,buttons:[],suggest:()=>{const x=sbAI(tgt,2);return{mark:{i:x},text:`Try ${sbName(x)} (green square).`};},auto:()=>({v:sbAI(tgt,2)})});
-    const r=sbFire(tgt,i);s.lastShot={F:tgt,i};T.render();
+    s.aim=null;const r=sbFire(tgt,i);s.lastShot={F:tgt,i};T.render();
     T.say(1,r.hit?(r.sunk?`You sunk my ${r.sunk.nm}!`:'Hit!'):'Miss',1400);T.note(`You fired at ${sbName(i)}: ${r.hit?(r.sunk?'sunk the '+r.sunk.nm+'!':'hit!'):'miss.'}`);
     await T.wait(800);if(!sbLeft(tgt).length)winner=0;}
    else{await T.wait(500);i=sbAI(tgt,T.level);T.say(cur,`${sbName(i)}?`,1600);await T.wait(500);
     const truth=tgt.own[i]>=0;const sunkWould=truth&&tgt.ships[tgt.own[i]].hits+1===tgt.ships[tgt.own[i]].len;
-    if(!s.autoAnswer){while(true){const v=await T.ask({prompt:`${p.name} fires at ${sbName(i)}. Check your fleet (bottom grid). Hit or miss?`,noMain:true,
+    s.aim=i;T.render();if(!s.autoAnswer){while(true){const v=await T.ask({prompt:`${p.name} fires at ${sbName(i)} (the flashing square on your fleet). Is a ship there? Hit or miss?`,noMain:true,
        buttons:[{label:'💥 Hit!',v:'hit'},{label:'💦 Miss',v:'miss'},{label:'Answer for me from now on',v:'auto',quiet:true}],
        suggest:()=>({text:truth?`${sbName(i)} has part of your ${tgt.ships[tgt.own[i]].nm}. That's a hit!`:`${sbName(i)} is open water. Miss!`}),auto:()=>({v:truth?'hit':'miss'})});
       if(v==='auto'){s.autoAnswer=true;break;}if((v==='hit')===truth){T.say(0,truth?(sunkWould?`You sunk my ${tgt.ships[tgt.own[i]].nm}!`:'Hit!'):'Miss!',1300);break;}
       T.note(truth?`Look again: ${sbName(i)} is part of your ${tgt.ships[tgt.own[i]].nm}. That's a hit!`:`Look again: ${sbName(i)} is open water. That's a miss.`);}}
-    const r=sbFire(tgt,i);s.lastShot={F:tgt,i};if(s.autoAnswer||T.auto)T.note(`${p.name} fired at ${sbName(i)}: ${r.hit?(r.sunk?'sunk your '+r.sunk.nm+'!':'hit!'):'miss.'}`);
+    s.aim=null;const r=sbFire(tgt,i);s.lastShot={F:tgt,i};if(s.autoAnswer||T.auto)T.note(`${p.name} fired at ${sbName(i)}: ${r.hit?(r.sunk?'sunk your '+r.sunk.nm+'!':'hit!'):'miss.'}`);
     T.render();await T.wait(700);if(!sbLeft(tgt).length)winner=1;}
    cur=1-cur;}
   s.reveal=true;T.active=-1;T.render();await T.wait(900);
