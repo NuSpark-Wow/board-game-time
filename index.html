@@ -117,6 +117,8 @@ body:has(#menu[hidden]) .strip,body:has(#play:not([hidden])) .strip,body:has(#ga
   <div class="desc" id="ldesc"></div>
   <h2>Table talk</h2>
   <div class="row" id="talks"></div><div class="desc" id="tdesc"></div>
+  <h2>Game length</h2>
+  <div class="row" id="lengths"></div><div class="desc" id="lendesc"></div>
   <h2>4. Speed</h2>
   <div class="row" id="speeds"></div>
   <button class="btn gold start" id="startBtn">Let's play →</button>
@@ -297,7 +299,7 @@ T.over=async html=>{if(T.auto){T.lastResult=html;return;}T.active=-1;T.render();
 
 /* ---------- menu & start ---------- */
 const GAMES={};
-let MENU={gid:null,n:null,level:1,fast:false,talk:'straight'};
+let MENU={gid:null,n:null,level:1,fast:false,talk:'straight',short:false};
 function showMenu(){T.token++;setPaused(false);T.pending=null;$('#modal').style.display='none';$('#game').hidden=true;$('#menu').hidden=false;renderMenu();window.scrollTo(0,0);}
 function startGame(gid,n,level,keep){T.token++;setPaused(false);T.pending=null;T.bubbles={};T.msg='';T.sugg=null;T.active=-1;T.gid=gid;T.n=n;T.level=level;
  const G=GAMES[gid];T.G=G;G.state={};
@@ -325,12 +327,13 @@ function renderMenu(){const g=$('#games');g.innerHTML='';
  const lv=$('#levels');lv.innerHTML='';LEVELS.forEach(([lab],i)=>lv.append(h('button',{class:'btn sm'+(MENU.level===i?' on':''),onclick:()=>{MENU.level=i;renderMenu();}},lab)));
  $('#ldesc').textContent=LEVELS[MENU.level][1];
  const tk=$('#talks');tk.innerHTML='';[['straight','💬 Straight'],['personality','😄 Personality']].forEach(([k,lab])=>tk.append(h('button',{class:'btn sm'+(MENU.talk===k?' on':''),onclick:()=>{MENU.talk=k;renderMenu();}},lab)));$('#tdesc').textContent=MENU.talk==='straight'?'Computer players keep it short: "Check." "Box!" "Pass."':'Computer players chat and tease: "I\'ll take that knight, thanks!" "Nice try. Blocked you!"';
+ const ln=$('#lengths');ln.innerHTML='';[['Full game',false],['⚡ Quick game',true]].forEach(([lab,f])=>ln.append(h('button',{class:'btn sm'+(MENU.short===f?' on':''),onclick:()=>{MENU.short=f;renderMenu();}},lab)));$('#lendesc').textContent=MENU.short?'Shorter finish lines: Dominoes to 50 points and Island Traders to 7 points. Other games are already one quick match.':'The full rules: Dominoes to 100 points and Island Traders to 10 points.';
  const sp=$('#speeds');sp.innerHTML='';[['Relaxed',false],['Quick',true]].forEach(([lab,f])=>sp.append(h('button',{class:'btn sm'+(MENU.fast===f?' on':''),onclick:()=>{MENU.fast=f;renderMenu();}},lab)));}
 function bindUI(){
  $('#spSlow').onclick=()=>{T.step=Math.max(-5,T.step-1);speedUI();};
  $('#spFast').onclick=()=>{T.step=Math.min(5,T.step+1);speedUI();};
  $('#spPause').onclick=()=>setPaused(!T.paused);
- $('#startBtn').onclick=()=>{if(!MENU.gid){$('#gdesc').textContent='Pick a game first.';return;}T.fast=MENU.fast;T.chatty=MENU.talk==='personality';startGame(MENU.gid,MENU.n,MENU.level);};
+ $('#startBtn').onclick=()=>{if(!MENU.gid){$('#gdesc').textContent='Pick a game first.';return;}T.fast=MENU.fast;T.short=MENU.short;T.chatty=MENU.talk==='personality';startGame(MENU.gid,MENU.n,MENU.level);};
  $('#leave').onclick=()=>{$('#mbody').innerHTML='<h3>Quit this game?</h3><p>You\'ll go back to the main screen, and this game won\'t be saved.</p>';const mb=$('#mbtns');mb.innerHTML='';
   mb.append(h('button',{class:'btn primary',onclick:()=>showMenu()},'Quit game'),h('button',{class:'btn',onclick:()=>{$('#modal').style.display='none';}},'Keep playing'));$('#modal').style.display='flex';};
  $('#rulesBtn').onclick=()=>{if(T.G)T.info(`<h3>How to play ${T.G.name}</h3>${akaLine(T.gid)}${T.G.rules}${akaFine(T.gid)}`);};
@@ -1017,7 +1020,7 @@ GAMES.dominoes={name:'Dominoes',icon:'🁫',tag:'Match the ends',min:2,max:4,def
  colorOf:p=>COLORS[p.i],showMe:false,
  seatInfo:p=>`${p.score} pts · ${p.hand?p.hand.length:0} tiles`,
  youInfo(){const me=T.players[0];return `Your score: <b>${me.score}</b> · Pips in your hand: ${me.hand?sum(me.hand.map(tileSum)):0}`;},
- scoreText(){return T.players.map(p=>`${p.name}: ${p.score}`).join(' · ')+' · First to 100';},
+ scoreText(){return T.players.map(p=>`${p.name}: ${p.score}`).join(' · ')+' · First to '+(T.short?50:100);},
  renderBoard(el){const s=this.state;if(!s.chain)return;const n=s.chain.length;const sz=n>20?10:n>12?12:15;
   el.append(h('div',{class:'cinfo'},`Boneyard: ${s.bone.length} tile${s.bone.length===1?'':'s'}`));
   const box=h('div',{style:'display:flex;flex-wrap:wrap;gap:3px;justify-content:center;align-items:center;max-width:540px;padding:8px;background:#1f5f3a;border-radius:10px;min-height:70px;box-shadow:inset 0 0 12px rgba(0,0,0,.4)'});
@@ -1034,7 +1037,7 @@ GAMES.dominoes={name:'Dominoes',icon:'🁫',tag:'Match the ends',min:2,max:4,def
     e.ondblclick=()=>{const f=domFits(t,s);if(f.length===1)T.resolve({t,side:f[0].side});};}
    el.append(e);});},
  async play(T){const G=this,s=G.state,P=T.players,n=P.length;P.forEach(p=>{p.score=0;p.hand=[];});s.chain=[];s.bone=[];let leader=null,roundNo=0;
-  while(Math.max(...P.map(p=>p.score))<100){roundNo++;s.chain=[];s.lastId=null;s.selId=null;s.msg='';P.forEach(p=>{p.hand=[];p.lacks=new Set();});
+  while(Math.max(...P.map(p=>p.score))<(T.short?50:100)){roundNo++;s.chain=[];s.lastId=null;s.selId=null;s.msg='';P.forEach(p=>{p.hand=[];p.lacks=new Set();});
    const shuffler=(roundNo-1)%n;T.active=shuffler;T.render();
    if(P[shuffler].human)await T.ask({prompt:'Your turn to mix the tiles.',buttons:[{label:'🔀 Shuffle the tiles',v:1}],auto:()=>({v:1})});else{T.say(shuffler,'Shuffling…',1300);await T.wait(900);}
    let id=0;const set=[];for(let a=0;a<=6;a++)for(let b=a;b<=6;b++)set.push({a,b,id:id++});s.bone=shuffle(set);const deal=n===2?7:5;P.forEach(p=>p.hand=s.bone.splice(0,deal));T.render();
@@ -1070,7 +1073,7 @@ GAMES.dominoes={name:'Dominoes',icon:'🁫',tag:'Match the ends',min:2,max:4,def
    else{const tot=P.map(q=>sum(q.hand.map(tileSum)));const low=Math.min(...tot);const ws=P.filter((q,i)=>tot[i]===low);
     if(ws.length===1){const w=ws[0];const pts=sum(tot)-low;w.score+=pts;leader=w.i;msg=`The game is blocked. ${w.human?'You have':w.name+' has'} the lowest hand and ${w.human?'score':'scores'} <b>${pts}</b>.`;}else{msg='The game is blocked and tied for lowest hand. No points this round.';leader=(leader??0);}}
    T.active=-1;T.render();await T.wait(700);
-   if(Math.max(...P.map(p=>p.score))<100)await T.modal(`<h3>Round ${roundNo} over</h3><p>${msg}</p>${scoreTable([['Player','Tiles left','Pips','Score'],...P.map(q=>[q.name,q.hand.map(t=>`${t.a}-${t.b}`).join(' ')||'none',sum(q.hand.map(tileSum)),q.score])])}`,[{label:'Next round',v:1}]);
+   if(Math.max(...P.map(p=>p.score))<(T.short?50:100))await T.modal(`<h3>Round ${roundNo} over</h3><p>${msg}</p>${scoreTable([['Player','Tiles left','Pips','Score'],...P.map(q=>[q.name,q.hand.map(t=>`${t.a}-${t.b}`).join(' ')||'none',sum(q.hand.map(tileSum)),q.score])])}`,[{label:'Next round',v:1}]);
    else s.msg=msg;}
   const best=Math.max(...P.map(p=>p.score)),w=P.filter(p=>p.score===best);
   await T.over(`<h3>${w.some(p=>p.human)?'You win!':w.map(p=>p.name).join(' & ')+' wins'}</h3><p>${s.msg}</p>${scoreTable([['Player','Score'],...P.map(p=>[p.name,p.score])])}`);}
@@ -1717,7 +1720,7 @@ GAMES.island={name:'Island Traders',icon:'🏝️',tag:'Build, trade and grow',m
  rules:'<p><b>Goal:</b> first to <b>10 points</b> wins. Village = 1 point, Town = 2, Longest Road (5+ roads in a row) = 2, Biggest Guard (3+ Guard cards played) = 2, and ⭐ cards = 1 each.</p><p><b>Start:</b> everyone places 2 villages, each with a road. Your second village gives you one of each resource around it.</p><p><b>Each turn:</b> roll the dice. Every tile with that number pays its resource to each village touching it (towns get 2). Then build, buy cards and trade.</p><p><b>Costs:</b> Road = 🌲+🧱 · Village = 🌲+🧱+🐑+🌾 · Town (upgrade a village) = 🌾🌾+⛰️⛰️⛰️ · Bonus card = 🐑+🌾+⛰️</p><p>Villages need an empty spot at least two roads away from any other village, connected to your road.</p><p><b>Rolling a 7:</b> anyone with more than 7 cards gives back half. Then the roller moves the 🦝 <b>raccoon bandit</b> to a tile (it stops that tile from paying) and takes a card from someone with a village there.</p><p><b>Trading:</b> trade 4 of one resource to the bank for 1 of any other. Villages on a harbor get better rates (3:1, or 2:1 for one resource). You can also offer trades to the other players.</p><p><b>Bonus cards:</b> 🛡️ Guard, ⭐ Victory Point, 🛣️ Road Crew (2 free roads), 🎁 Plenty (take 2 resources), 📣 Market Day (everyone hands you one resource). Play one per turn, not on the turn you bought it.</p>',
  colorOf:p=>COLORS[p.i],showMe:false,
  seatInfo(p){const s=this.state;if(!s.B||!p.res)return '';return `${itVP(s,p,false)} pts · ${itCards(p)} cards${p.knights?` · 🛡️${p.knights}`:''}${s.longest===p.i?' · 🛣️':''}${s.army===p.i?' · 🛡️★':''}`;},
- scoreText(){const s=this.state;if(!s.B)return '';return `${s.dice?`Rolled ${DIE[s.dice[0]]} ${DIE[s.dice[1]]} = ${s.dice[0]+s.dice[1]} · `:''}First to 10 points`;},
+ scoreText(){const s=this.state;if(!s.B)return '';return `${s.dice?`Rolled ${DIE[s.dice[0]]} ${DIE[s.dice[1]]} = ${s.dice[0]+s.dice[1]} · `:''}First to ${T.short?7:10} points`;},
  youInfo(){const s=this.state,me=T.players[0];if(!s.B||!me.res)return '';return `Your points: <b>${itVP(s,me,true)}</b>${me.cards.length?` · Cards: ${me.cards.map(c=>IT.CARD[c].e).join(' ')}`:''}`;},
  renderBoard(el){const s=this.state,B=s.B;if(!B)return;const pd=T.pending,P=T.players;const W=Math.min((window.innerWidth||400)-12,540),sz=W/10.3,cx=W/2,cy=W*0.515;
   const X=x=>cx+x*sz,Y=y=>cy+y*sz;const Hh=Math.round(W*1.03);
@@ -1764,7 +1767,7 @@ GAMES.island={name:'Island Traders',icon:'🏝️',tag:'Build, trade and grow',m
   const checkLongest=()=>{let best=s.longest,bl=best>=0?itLongest(B,best):4;P.forEach(p=>{const l=itLongest(B,p.i);if(l>=5&&l>bl){best=p.i;bl=l;}});if(s.longest>=0&&itLongest(B,s.longest)<5){best=-1;bl=4;P.forEach(p=>{const l=itLongest(B,p.i);if(l>=5&&l>bl){best=p.i;bl=l;}});}
    if(best!==s.longest){s.longest=best;if(best>=0)T.note(`${name(P[best])} ${P[best].human?'have':'has'} the Longest Road (+2 points)!`);}};
   const checkArmy=p=>{const cur=s.army>=0?P[s.army].knights:2;if(p.knights>=3&&p.knights>cur&&s.army!==p.i){s.army=p.i;T.note(`${name(p)} ${p.human?'have':'has'} the Biggest Guard (+2 points)!`);}};
-  const won=p=>itVP(s,p,true)>=10;
+  const won=p=>itVP(s,p,true)>=(T.short?7:10);
   // ---- placement helpers ----
   const humanPick=async(kind,spots,prompt,cancel,sugg)=>{const v=await T.ask({prompt,it:kind,spots,buttons:cancel?[{label:'Cancel',v:'cancel',quiet:true}]:[],suggest:sugg,auto:()=>({v:sugg?sugg().pick:null})});return v;};
   const bestRoad=(p,lv,spots)=>{// pick the road that heads toward the best open village spot
